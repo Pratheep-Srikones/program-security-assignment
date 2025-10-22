@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Secure Form</title>
+  </head>
+  <body>
+    <form onsubmit="handleSubmit(event)">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        pattern="[a-zA-Z0-9]+"
+        required
+      />
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        const username = document.getElementById("username").value;
+        // Simple client-side validation to allow only alphanumeric characters
+        // This helps prevent SQL Injection by restricting input format
+        if (/[^a-zA-Z0-9]/.test(username)) {
+          alert("Invalid characters detected!");
+        } else {
+          alert(
+            "Simulated query: SELECT * FROM users WHERE username = '" +
+              username +
+              "'"
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

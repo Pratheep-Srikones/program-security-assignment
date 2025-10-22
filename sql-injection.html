@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>User Input Form</title>
+  </head>
+  <body>
+    <!-- Here a form is created to collect user input -->
+    <form onsubmit="handleSubmit(event)">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        // here the web page does not sanitize or test user input which can lead to SQL Injection
+        const username = document.getElementById("username").value;
+        alert(
+          "Simulated query: SELECT * FROM users WHERE username = '" +
+            username +
+            "'"
+        );
+      }
+    </script>
+  </body>
+</html>
